@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #070b0a; }
+body { margin: 0; background: #070b0a; color: #f4f7f5; font-family: var(--font-sans), sans-serif; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: .2; background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg,rgba(255,255,255,.018) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom,black,transparent 90%); }
+::selection { background: #b9ff66; color: #070b0a; }
+.section { padding-top: clamp(6.5rem, 12vw, 11rem); }
+.section-title { font-size: clamp(2.8rem, 7vw, 6.8rem); font-weight: 600; letter-spacing: -.065em; line-height: .92; }
+.lab-card { border: 1px solid rgba(255,255,255,.1); border-radius: 1.5rem; background: linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01)); backdrop-filter: blur(16px); }
+.meta { font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: .2em; color: rgba(185,255,102,.75); }
+.project-card { position: relative; }
+.project-card::before { content:""; position:absolute; inset:0; z-index:-1; opacity:0; transition:opacity .3s; background: radial-gradient(500px circle at var(--mx) var(--my),rgba(185,255,102,.08),transparent 45%); }
+.project-card:hover::before { opacity: 1; }
+.innovation { --tw-bg-opacity: 1; background: #080810; }
+.innovation .text-acid { color: #7ee8ff !important; }
+.innovation .bg-acid { background-color: #7ee8ff !important; }
+.innovation .border-acid { border-color: #7ee8ff !important; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+@media (max-width: 640px) {
+  .section { padding-top: 5rem; }
+  .section-title { font-size: clamp(2.2rem, 12vw, 4rem); line-height: .95; }
+  body::before { opacity: .12; background-size: 32px 32px; }
+}
+
+@keyframes cosmic-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .55; }
+  50% { transform: translate3d(0, -18px, 0) scale(1.05); opacity: .9; }
+}
+
+@keyframes cosmic-glow {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, 10px, 0) scale(1.08); }
+}
