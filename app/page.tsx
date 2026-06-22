@@ -35,7 +35,16 @@ import { NeuralField } from "@/components/neural-field";
 import { Terminal } from "@/components/terminal";
 
 const roles = ["AIML STUDENT", "COMPUTER VISION BUILDER", "ML PRACTITIONER", "IOT PROJECT CONTRIBUTOR", "TEAM COLLABORATOR"];
-const navItems = ["About", "Skills", "Projects", "Build style", "Journey", "Certifications", "Contact"];
+const navItems = [
+  { label: "About me", href: "#about" },
+  { label: "Now", href: "#now" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "How I work", href: "#signature" },
+  { label: "Journey", href: "#journey" },
+  { label: "Learning", href: "#certifications" },
+  { label: "Say hello", href: "#contact" },
+];
 
 const profile = {
   name: "Shreya V",
@@ -44,7 +53,6 @@ const profile = {
   location: "Bengaluru, Karnataka",
   cgpa: "6.59",
   graduation: "2023-2027",
-  phone: "+91 6360516101",
   email: "shreyav0304@gmail.com",
   github: "https://github.com/shreyav0304",
   linkedin: "https://linkedin.com/in/shreyavinod",
@@ -206,8 +214,8 @@ export default function Home() {
 
           <nav className="hidden items-center gap-7 text-xs text-white/55 md:flex">
             {navItems.map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-white">
-                {item}
+              <a key={item.label} href={item.href} className="transition hover:text-white">
+                {item.label}
               </a>
             ))}
 
@@ -236,8 +244,8 @@ export default function Home() {
         {menu && (
           <nav className="grid border-t border-white/10 bg-ink p-5 md:hidden">
             {navItems.map((item) => (
-              <a key={item} onClick={() => setMenu(false)} href={`#${item.toLowerCase()}`} className="py-3 text-white/70">
-                {item}
+              <a key={item.label} onClick={() => setMenu(false)} href={item.href} className="py-3 text-white/70">
+                {item.label}
               </a>
             ))}
           </nav>
@@ -260,7 +268,7 @@ export default function Home() {
           <div className="max-w-5xl">
             <div data-intro className="mb-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.2em] text-white/40">
               <span className="h-2 w-2 animate-pulse rounded-full bg-acid shadow-[0_0_12px_#b9ff66]" />
-              Bengaluru-based AIML showcase
+              Hi, I'm Shreya.
             </div>
 
             <p data-intro className="mb-3 text-sm text-white/50">
@@ -285,7 +293,7 @@ export default function Home() {
             </div>
 
             <p data-intro className="mt-8 max-w-2xl text-base leading-relaxed text-white/55 sm:text-lg">
-              I build computer vision, machine learning, and IoT-linked systems that turn classroom concepts into useful software.
+              I like turning class projects into things that actually work - especially when computer vision, machine learning, and IoT overlap.
             </p>
 
             <div data-intro className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -293,10 +301,10 @@ export default function Home() {
                 Explore projects <ArrowDown size={15} />
               </Button>
               <Button href={profile.resume} target="_blank" rel="noreferrer" variant="outline">
-                <Download size={15} /> Download Resume
+                <Download size={15} /> Download CV
               </Button>
               <Button href="#contact" variant="ghost">
-                Contact details <ArrowUpRight size={15} />
+                Say hello <ArrowUpRight size={15} />
               </Button>
             </div>
 
@@ -309,7 +317,7 @@ export default function Home() {
               {profile.location}
             </p>
             <p className="hidden text-right font-mono text-[8px] uppercase leading-5 tracking-[.18em] text-white/25 sm:block sm:text-[9px]">
-              2023–2027
+              2023-2027
               <br />
               {profile.graduation}
             </p>
@@ -320,27 +328,51 @@ export default function Home() {
       <section id="about" className="section relative z-10">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[.75fr_1.25fr] lg:px-8">
           <Reveal>
-            <Label>Profile</Label>
+            <Label>About me</Label>
             <h2 className="section-title">
               Student,
               <br />
-              building real systems.
+              learning by building.
             </h2>
           </Reveal>
 
           <Reveal className="lg:pt-8">
             <p className="text-xl leading-relaxed text-white/75 sm:text-2xl">
-              I&apos;m <span className="text-acid">Shreya V</span>, an AIML student at Cambridge Institute of Technology focused on machine learning, computer vision, and software systems connected to real use cases.
+              I like building practical things, fixing what breaks, and seeing ideas become something usable.
             </p>
             <p className="mt-7 max-w-2xl leading-7 text-white/45">
-              My work is shaped by vision pipelines, classification work, sensor-linked software, scheduling logic, and collaborative student teams.
+              Most of my work comes from class, team projects, and the slightly messy process of making ideas less abstract.
             </p>
             <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
-              <Metric n={profile.cgpa} text="CGPA" />
-              <Metric n="04" text="Projects + ongoing work" />
-              <Metric n={profile.graduation} text="Degree span" />
+              <Metric n="04" text="Projects" />
+              <Metric n="02" text="Ongoing projects" />
+              <Metric n="02" text="Campus roles" />
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      <section id="now" className="section relative z-10">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <Reveal>
+            <Label>Currently</Label>
+            <h2 className="section-title">What I'm focused on right now.</h2>
+          </Reveal>
+
+          <div className="mt-14 grid gap-3 md:grid-cols-3">
+            {[
+              ["Learning", "Getting more comfortable with model evaluation, better UI decisions, and shipping cleaner projects."],
+              ["Enjoying", "Projects where the data, hardware, and interface all need to make sense together."],
+              ["Want more of", "Small tools that solve one real problem well, even if they start simple."],
+            ].map(([title, text]) => (
+              <Reveal key={title}>
+                <div className="rounded-3xl border border-white/10 bg-white/[.025] p-6">
+                  <p className="font-mono text-[9px] uppercase tracking-[.2em] text-acid">{title}</p>
+                  <p className="mt-4 text-sm leading-7 text-white/55">{text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -350,9 +382,9 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
                 <Label>Skills</Label>
-                <h2 className="section-title">Toolkit.</h2>
+                <h2 className="section-title">What I use most.</h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-white/40">Languages, ML/AI, libraries, tools, embedded systems, and databases.</p>
+              <p className="max-w-sm text-sm leading-6 text-white/40">The tools I reach for most often when I'm building something.</p>
             </div>
           </Reveal>
 
@@ -378,8 +410,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal>
             <Label>Projects</Label>
-            <h2 className="section-title">Projects.</h2>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/45">A mix of completed and ongoing builds, including computer vision, GPR classification, VOC analysis, and timetable automation.</p>
+            <h2 className="section-title">Things I've built.</h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/45">A mix of finished work and things I'm still refining — the kind of projects I actually spend time on.</p>
           </Reveal>
 
           <div className="mt-14 space-y-5">
@@ -395,8 +427,8 @@ export default function Home() {
       <section id="signature" className="section relative z-10">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal>
-            <Label>Build style</Label>
-            <h2 className="section-title">A visual signature.</h2>
+            <Label>How I work</Label>
+            <h2 className="section-title">A few things I care about.</h2>
           </Reveal>
 
           <div className="mt-16 grid gap-3 lg:grid-cols-[1.2fr_.8fr]">
@@ -436,10 +468,10 @@ export default function Home() {
               <div className="lab-card h-full overflow-hidden p-7 sm:p-10">
                 <div className="flex items-center gap-3">
                   <Radar className="text-acid" />
-                  <p className="font-mono text-[10px] uppercase tracking-[.2em] text-white/30">Signal map</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[.2em] text-white/30">A few notes</p>
                 </div>
-                <h3 className="mt-8 text-2xl font-semibold">A visual signature.</h3>
-                <p className="mt-4 max-w-sm text-sm leading-7 text-white/45">Instead of a generic skills grid, this section compresses the way you work into a visual story: see, build, and collaborate.</p>
+                <h3 className="mt-8 text-2xl font-semibold">A few things I care about.</h3>
+                <p className="mt-4 max-w-sm text-sm leading-7 text-white/45">Instead of a generic skills grid, this section is just a quick look at how I like to work: observe, build, and collaborate.</p>
                 <div className="relative mt-8 h-44 overflow-hidden rounded-[2rem] border border-white/10 bg-black/30">
                   <div className="absolute inset-4 rounded-full border border-white/10" />
                   <div className="absolute inset-10 rounded-full border border-acid/20" />
@@ -454,9 +486,9 @@ export default function Home() {
                 </div>
                 <div className="mt-8 grid gap-4">
                   {[
-                    ["See", "Vision-first problem solving"],
-                    ["Build", "Pipelines, interfaces, and logic"],
-                    ["Collaborate", "Team delivery and leadership"],
+                    ["See", "I like seeing the problem clearly first"],
+                    ["Build", "A mix of logic, UI, and data flow"],
+                    ["Collaborate", "Working with other people and owning the job"],
                   ].map(([title, desc]) => (
                     <div key={title} className="group flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-4 py-4 transition hover:border-acid/40 hover:bg-acid/[.04]">
                       <div>
@@ -477,7 +509,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal>
             <Label>Journey</Label>
-            <h2 className="section-title">Responsibilities and milestones.</h2>
+            <h2 className="section-title">A few milestones.</h2>
           </Reveal>
 
           <div className="mt-16 grid border-t border-white/10 md:grid-cols-5">
@@ -506,10 +538,10 @@ export default function Home() {
           <Reveal>
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
-                <Label>Certifications</Label>
-                <h2 className="section-title">Certificates.</h2>
+                <Label>Learning</Label>
+                <h2 className="section-title">Certificates & badges.</h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-white/40">A compact gallery of completed learning milestones.</p>
+              <p className="max-w-sm text-sm leading-6 text-white/40">A small collection of courses and badges I've completed along the way.</p>
             </div>
           </Reveal>
 
@@ -541,10 +573,10 @@ export default function Home() {
           <Reveal>
             <div className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
-                <Label>Contact</Label>
-                <h2 className="section-title">Reach out directly.</h2>
+                <Label>Say hello</Label>
+                <h2 className="section-title">Let's talk.</h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-white/40">Best ways to reach me, plus the social links I actually use.</p>
+              <p className="max-w-sm text-sm leading-6 text-white/40">The easiest ways to reach me are below. No extra noise.</p>
             </div>
 
             <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -558,12 +590,12 @@ export default function Home() {
           </Reveal>
 
           <footer className="mt-20 flex flex-col justify-between gap-6 border-t border-white/10 pt-8 text-xs text-white/30 sm:flex-row">
-            <p>© 2026 SHREYA V</p>
+            <p>Made by Shreya V · 2026</p>
             <div className="flex gap-5">
               <a href={profile.github} aria-label="GitHub" target="_blank" rel="noreferrer">
                 <Github size={16} />
               </a>
-              <a href="#top">Back to top ↑</a>
+              <a href="#top">Back to top</a>
             </div>
           </footer>
         </div>
@@ -675,7 +707,7 @@ function Project({ p, index }: { p: (typeof projects)[number]; index: number }) 
                 ))}
               </div>
               <p className="meta mt-8">Project note</p>
-              <p className="mt-3 text-xs leading-5 text-white/40">Descriptions stay focused on the live project state.</p>
+              <p className="mt-3 text-xs leading-5 text-white/40">Short version: what's actually built, or what I'm still working on.</p>
             </div>
           </div>
         </motion.div>

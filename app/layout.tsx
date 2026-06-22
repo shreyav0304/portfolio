@@ -30,7 +30,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     alumniOf: "Cambridge Institute of Technology",
     homeLocation: "Bengaluru, Karnataka",
     email: "mailto:shreyav0304@gmail.com",
-    telephone: "+91 6360516101",
     sameAs: ["https://linkedin.com/in/shreyavinod", "https://github.com/shreyav0304"],
     knowsAbout: ["Machine Learning", "Computer Vision", "Deep Learning", "IoT", "Data Science"],
   };
