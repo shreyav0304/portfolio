@@ -541,7 +541,7 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
                 <Label>Learning</Label>
-                <h2 className="section-title">Selected credentials.</h2>
+                <h2 className="section-title">Certifications &amp; Recognition.</h2>
               </div>
               <p className="max-w-sm text-sm leading-6 text-white/40">A few highlights from my learning and research. The complete collection is available on Google Drive.</p>
             </div>
