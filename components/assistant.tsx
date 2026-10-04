@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { Bot, Send, X } from "lucide-react";
+import { featuredCertifications } from "@/lib/certifications";
 
 const answer = (q: string) => {
   const s = q.toLowerCase();
 
   if (s.includes("project") || s.includes("work")) {
-    return "It currently shows four projects: Smart Checkers Move Detection, GPR Object Classification, VOC Monitoring & Analysis, and ClassMitra.";
+    return "It currently shows five projects: Vanora, Smart Checkers Move Detection, GPR Object Classification, VOC Monitoring & Analysis, and ClassMitra. Vanora is a live trekking app for Indian trail discovery, trip preparation, and activity recording; its project card links to the app.";
   }
 
   if (s.includes("skill") || s.includes("stack")) {
@@ -15,7 +16,7 @@ const answer = (q: string) => {
   }
 
   if (s.includes("certificate") || s.includes("certification")) {
-    return "The certifications section links directly to the Google Drive certificate folder for verification.";
+    return `The learning section highlights ${featuredCertifications.length} selected credentials in machine learning, Python, security, AI literacy, and research. Use the Google Drive link there to browse the complete certificate collection.`;
   }
 
   if (s.includes("contact") || s.includes("email") || s.includes("phone")) {

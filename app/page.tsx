@@ -16,9 +16,9 @@ import {
   Download,
   FlaskConical,
   Github,
-  GraduationCap,
   Menu,
   MailOpen,
+  Mountain,
   Phone,
   Radar,
   Search,
@@ -33,6 +33,7 @@ import { Assistant } from "@/components/assistant";
 import { CommandPalette } from "@/components/command-palette";
 import { NeuralField } from "@/components/neural-field";
 import { Terminal } from "@/components/terminal";
+import { certificateArchive, featuredCertifications } from "@/lib/certifications";
 
 const roles = ["AIML STUDENT", "COMPUTER VISION BUILDER", "ML PRACTITIONER", "IOT PROJECT CONTRIBUTOR", "TEAM COLLABORATOR"];
 const navItems = [
@@ -57,7 +58,7 @@ const profile = {
   github: "https://github.com/shreyav0304",
   linkedin: "https://linkedin.com/in/shreyavinod",
   resume: "/shreyaresume.pdf",
-  certificates: "https://drive.google.com/drive/folders/12zV18VyWC5lBapC0ua0SFd1NYBlNv0m6?usp=drive_link",
+  certificates: certificateArchive,
 };
 
 const skills = [
@@ -71,6 +72,18 @@ const skills = [
 const projects = [
   {
     n: "01",
+    tag: "TREKKING & OUTDOOR PLANNING",
+    title: "Vanora — Every trail, your story",
+    subtitle: "Live web app · JavaScript, interactive maps",
+    desc: "Built a trekking app to discover Indian trails, compare destinations, prepare personal trip plans, and record trail activities.",
+    tech: ["JavaScript", "Interactive Maps", "Geolocation", "Local Storage", "Vercel"],
+    features: ["Trail discovery and comparison of up to three destinations", "Personal itineraries, preparation checklists, and shared-cost budgets", "GPS activity recording and saved trail stories"],
+    href: "https://vanora-every-trail-your-story.vercel.app/",
+    icon: Mountain,
+    color: "#8dd6ac",
+  },
+  {
+    n: "02",
     tag: "COMPUTER VISION",
     title: "Smart Checkers Move Detection System",
     subtitle: "Python, TensorFlow, OpenCV",
@@ -81,7 +94,7 @@ const projects = [
     color: "#b9ff66",
   },
   {
-    n: "02",
+    n: "03",
     tag: "MACHINE LEARNING",
     title: "Ground Penetrating Radar Object Classification System",
     subtitle: "Python, ML (Ongoing)",
@@ -92,18 +105,18 @@ const projects = [
     color: "#7ee8ff",
   },
   {
-    n: "03",
+    n: "04",
     tag: "IOT + ANALYTICS",
     title: "VOC Monitoring & Analysis System",
-    subtitle: "Python, IoT (Ongoing)",
-    desc: "Developing software modules for VOC sensor data acquisition, analysis, and visualization in a four-member team.",
+    subtitle: "Python, IoT · Research Associate, February–July 2026",
+    desc: "Contributed to research, embedded system design, prototyping, testing, and implementation of a multimodal VOC-based biometric authentication system at Cambrian SkillsDA Technologies and Consultancy Services LLP.",
     tech: ["Python", "IoT", "Data Visualization", "Team Collaboration"],
     features: ["Sensor data acquisition modules", "Processing and visualization workflows", "Winner - Cyber Security Grand Challenge 2.0"],
     icon: CircuitBoard,
     color: "#e1b9ff",
   },
   {
-    n: "04",
+    n: "05",
     tag: "ACADEMIC PLANNING",
     title: "ClassMitra - Smart Timetable Generator",
     subtitle: "TypeScript (Ongoing)",
@@ -143,19 +156,8 @@ const journey = [
   ["2023", "Started B.E. AIML", "Began Artificial Intelligence & Machine Learning at Cambridge Institute of Technology."],
   ["2023-2026", "TEDxCIT Technical Team", "Supported event operations, ticketing, documentation, and technical coordination."],
   ["2025", "Cambrian Open House Finance Lead", "Managed budgeting, vendor payments, financial records, and reporting."],
-  ["Ongoing", "Project Track", "Working across checkers vision, GPR classification, VOC analysis, and ClassMitra."],
-  ["Recognition", "Challenge Winner", "VOC Monitoring & Analysis System contributed to a Cyber Security Grand Challenge 2.0 win."],
-];
-
-const certifications = [
-  { title: "Machine Learning Specialization", kind: "Specialization", icon: Award },
-  { title: "Advanced Learning Algorithms", kind: "Course", icon: ShieldCheck },
-  { title: "Python for Data Science", kind: "Course", icon: GraduationCap },
-  { title: "Probability & Statistics using Python", kind: "Course", icon: Award },
-  { title: "Data Structures in C", kind: "Course", icon: ShieldCheck },
-  { title: "Cryptography & Network Security", kind: "Course", icon: GraduationCap },
-  { title: "Gen AI Mastermind Program", kind: "Program", icon: Award },
-  { title: "AI Literacy Badge (2026)", kind: "Badge", icon: ShieldCheck },
+  ["Ongoing", "Project Track", "Working across checkers vision, GPR classification, and ClassMitra."],
+  ["Feb–Jul 2026", "Research Associate", "Contributed to a multimodal VOC-based biometric authentication system at Cambrian SkillsDA. The project was recognized as a National Winner in Cyber Security Grand Challenge 2.0 for Startups."],
 ];
 
 function Label({ children }: { children: React.ReactNode }) {
@@ -344,7 +346,7 @@ export default function Home() {
               Most of my work comes from class, team projects, and the slightly messy process of making ideas less abstract.
             </p>
             <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
-              <Metric n="04" text="Projects" />
+              <Metric n={String(projects.length).padStart(2, "0")} text="Projects" />
               <Metric n="02" text="Ongoing projects" />
               <Metric n="02" text="Campus roles" />
             </div>
@@ -539,22 +541,28 @@ export default function Home() {
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
                 <Label>Learning</Label>
-                <h2 className="section-title">Certificates & badges.</h2>
+                <h2 className="section-title">Selected credentials.</h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-white/40">A small collection of courses and badges I've completed along the way.</p>
+              <p className="max-w-sm text-sm leading-6 text-white/40">A few highlights from my learning and research. The complete collection is available on Google Drive.</p>
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            {certifications.map((cert, index) => (
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredCertifications.map((cert, index) => (
               <Reveal key={cert.title}>
-                <div className="group min-h-60 rounded-3xl border border-white/10 bg-white/[.025] p-7 transition hover:-translate-y-1 hover:border-acid/40">
+                <div className="group rounded-3xl border border-white/10 bg-white/[.025] p-6 transition hover:-translate-y-1 hover:border-acid/40">
                   <div className="flex items-center justify-between">
-                    <cert.icon className="text-acid" size={22} />
-                    <span className="font-mono text-[9px] uppercase tracking-[.2em] text-white/20">0{index + 1}</span>
+                    <Award className="text-acid" size={22} />
+                    <span className="font-mono text-[9px] uppercase tracking-[.2em] text-white/20">{String(index + 1).padStart(2, "0")}</span>
                   </div>
-                  <p className="mt-10 font-mono text-[10px] uppercase tracking-[.2em] text-acid/80">{cert.kind}</p>
-                  <h3 className="mt-4 text-2xl font-semibold">{cert.title}</h3>
+                  <p className="mt-5 font-mono text-[10px] uppercase tracking-[.2em] text-acid/80">{cert.kind}</p>
+                  <h3 className="mt-3 text-xl font-semibold">{cert.title === "Research Associate — Certificate of Appreciation" ? "Research Associate Recognition" : cert.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/60">{cert.issuer}</p>
+                  {cert.date && <p className="mt-1 text-xs text-white/40">{cert.date}</p>}
+                  <div className="mt-6 flex flex-wrap gap-4 text-sm text-acid">
+                    <a href={`https://drive.google.com/file/d/${cert.fileId}/view`} target="_blank" rel="noopener noreferrer" aria-label={`View certificate: ${cert.title} (opens in a new tab)`} className="inline-flex items-center gap-1 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-acid">Certificate <ArrowUpRight size={14} /></a>
+                    {cert.verification && <a href={cert.verification} target="_blank" rel="noopener noreferrer" aria-label={`Issuer verification: ${cert.title} (opens in a new tab)`} className="inline-flex items-center gap-1 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-acid">Verify <ShieldCheck size={14} /></a>}
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -562,7 +570,7 @@ export default function Home() {
 
           <Reveal className="mt-8">
             <Button href={profile.certificates} target="_blank" rel="noreferrer">
-              Open archive <ArrowUpRight size={15} />
+              View all certificates on Google Drive <ArrowUpRight size={15} />
             </Button>
           </Reveal>
         </div>
@@ -663,7 +671,7 @@ function Project({ p, index }: { p: (typeof projects)[number]; index: number }) 
       }}
       className="project-card group overflow-hidden rounded-3xl border border-white/10 bg-[#0b100e]/85"
     >
-      <button onClick={() => setOpen(!open)} className="grid w-full gap-8 p-6 text-left sm:p-9 lg:grid-cols-[.15fr_.55fr_1fr_.15fr] lg:items-center">
+      <button onClick={() => setOpen(!open)} aria-expanded={open} className="grid w-full gap-8 p-6 text-left sm:p-9 lg:grid-cols-[.15fr_.55fr_1fr_.15fr] lg:items-center">
         <p className="font-mono text-xs text-white/25">/{p.n}</p>
         <div>
           <p className="font-mono text-[9px] font-bold tracking-[.2em]" style={{ color: p.color }}>
@@ -708,6 +716,7 @@ function Project({ p, index }: { p: (typeof projects)[number]; index: number }) 
               </div>
               <p className="meta mt-8">Project note</p>
               <p className="mt-3 text-xs leading-5 text-white/40">Short version: what's actually built, or what I'm still working on.</p>
+              {p.href && <a href={p.href} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-full border border-acid/40 px-5 py-3 text-sm text-acid transition hover:bg-acid/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-acid" aria-label={`Open ${p.title} live app (opens in a new tab)`}>Open live app <ArrowUpRight size={16} /></a>}
             </div>
           </div>
         </motion.div>

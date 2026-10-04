@@ -1,18 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { certificateArchive, featuredCertifications } from "@/lib/certifications";
 
 const data: Record<string, string> = {
   help: "Available: about, projects, skills, github, linkedin, email, resume, certificates",
   about: "Shreya V - B.E. Artificial Intelligence & Machine Learning student at Cambridge Institute of Technology, Bengaluru.",
-  projects: "Smart Checkers Move Detection System / GPR Object Classification System / VOC Monitoring & Analysis System / ClassMitra",
+  projects: "Vanora — https://vanora-every-trail-your-story.vercel.app/ / Smart Checkers Move Detection System / GPR Object Classification System / VOC Monitoring & Analysis System / ClassMitra",
   skills: "Python · Java · C · SQL · ML · Deep Learning · Computer Vision · NumPy · Pandas · Scikit-learn · Git · MySQL · SQLite",
   github: "GitHub: https://github.com/shreyav0304",
   linkedin: "LinkedIn: https://linkedin.com/in/shreyavinod",
   email: "Email: shreyav0304@gmail.com",
   cv: "Resume: /shreyaresume.pdf",
   resume: "Resume: /shreyaresume.pdf",
-  certificates: "Verified certificate archive: https://drive.google.com/drive/folders/12zV18VyWC5lBapC0ua0SFd1NYBlNv0m6?usp=drive_link",
+  certificates: `${featuredCertifications.length} selected credentials at #certifications. Full certificate collection on Google Drive: ${certificateArchive}`,
 };
 
 export function Terminal() {
